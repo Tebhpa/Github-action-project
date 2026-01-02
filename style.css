@@ -1,0 +1,97 @@
+ :root{
+    --bg:#0b1020;
+    --panel:#121936;
+    --ink:#e8ecff;
+    --muted:#98a2c6;
+    --accent:#5dd2ff;
+    --accent-2:#8af5c9;
+    --warning:#ffd36e;
+    --ok:#79f2a3;
+    --code:#0b1020;
+    --chip:#1a2452;
+    --border:rgba(255,255,255,0.12);
+    --shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px var(--border);
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7fb;
+      --panel:#ffffff;
+      --ink:#12131a;
+      --muted:#5b617a;
+      --accent:#0066ff;
+      --accent-2:#00b894;
+      --warning:#b37400;
+      --ok:#0a8f5b;
+      --code:#0e1325;
+      --chip:#eef1ff;
+      --border:rgba(10,16,40,0.1);
+      --shadow:0 8px 24px rgba(10,16,40,.08), inset 0 0 0 1px var(--border);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    background: radial-gradient(1200px 700px at 75% -10%, rgba(93,210,255,.15), transparent 70%),
+                radial-gradient(1200px 700px at -10% 30%, rgba(138,245,201,.12), transparent 60%),
+                var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 80px}
+  .hero{
+    display:grid; gap:18px; padding:28px; border-radius:24px;
+    background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)) , var(--panel);
+    box-shadow: var(--shadow);
+    position:relative; overflow:hidden;
+  }
+  .hero:after{
+    content:""; position:absolute; inset:-1px; pointer-events:none; border-radius:24px;
+    background:
+      radial-gradient(300px 70px at 15% 0%, rgba(93,210,255,.2), transparent 60%),
+      radial-gradient(200px 60px at 85% 10%, rgba(138,245,201,.18), transparent 60%);
+    mix-blend-mode: screen;
+  }
+  .title{font-size:clamp(28px, 2.6vw + 10px, 44px); line-height:1.15; margin:0}
+  .subtitle{margin:4px 0 0; color:var(--muted); font-size:clamp(14px, 1.2vw + 8px, 18px)}
+  .chips{display:flex;flex-wrap:wrap; gap:8px; margin-top:6px}
+  .chip{
+    padding:8px 12px; border-radius:999px; background:var(--chip);
+    border:1px solid var(--border); font-size:12px; letter-spacing:.2px; display:inline-flex; align-items:center; gap:8px
+  }
+  .chip b{font-weight:600}
+  .grid{display:grid; gap:16px; grid-template-columns: repeat(12, 1fr); margin-top:26px}
+  .card{
+    grid-column: span 6; background:var(--panel); border-radius:20px; padding:18px;
+    box-shadow:var(--shadow); border:1px solid var(--border)
+  }
+  @media (max-width: 880px){ .card{grid-column: span 12} }
+  .card h3{margin:2px 0 8px; font-size:18px}
+  .muted{color:var(--muted)}
+  .kpi{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px}
+  .kpi div{
+    background:linear-gradient(180deg, rgba(255,255,255,.05), transparent),
+               var(--panel);
+    border:1px solid var(--border); border-radius:14px; padding:10px 12px; min-width:120px
+  }
+  .kpi .num{font-weight:700; font-size:18px}
+  .cmd{
+    background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,0)) , var(--code);
+    color:#e6eaff; border:1px solid var(--border); border-radius:14px;
+    padding:14px; overflow:auto; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:13px;
+  }
+  .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+  .btn{
+    appearance:none; border:none; cursor:pointer; padding:10px 14px; border-radius:12px; font-weight:600;
+    background:linear-gradient(180deg, rgba(255,255,255,.08), transparent), var(--panel);
+    border:1px solid var(--border); color:var(--ink);
+    box-shadow: var(--shadow); transition: transform .05s ease;
+  }
+  .btn:hover{transform: translateY(-1px)}
+  .btn.accent{background: linear-gradient(180deg, rgba(93,210,255,.2), transparent); border-color: rgba(93,210,255,.4)}
+  .tag{font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid var(--border); background:var(--chip); margin-left:8px}
+  details{border:1px solid var(--border); border-radius:14px; padding:12px 14px; background:var(--panel); box-shadow:var(--shadow)}
+  details summary{cursor:pointer; font-weight:700}
+  footer{margin-top:40px; color:var(--muted); font-size:13px; text-align:center}
+  .ok{color:var(--ok)} .warn{color:var(--warning)}
+  .note{background:rgba(138,245,201,.12); border:1px dashed rgba(138,245,201,.4); padding:10px 12px; border-radius:12px; font-size:14px}
