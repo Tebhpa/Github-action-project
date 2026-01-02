@@ -1,6 +1,13 @@
 name: build and push docker image from the github action  
 
 on:
+  pull_request:
+    branches:
+        - main 
+  push: 
+    branches:
+        - main 
+    
   workflow_dispatch:
  
 jobs:
@@ -12,11 +19,11 @@ jobs:
           uses: actions/checkout@v4 
         - name: Docker image build 
           run: |
-                docker build -t ${{ secrets.DOCKER_HUB_USERNAME}}/docker-project-image-push:dev .
+                docker build -t ${{ secrets.DOCKER_HUB_USERNAME}}/docker-project-image-push:main .
         - name: Docker push images to dockerhub 
           run: | 
                docker login -u ${{ secrets.DOCKER_HUB_USERNAME}} -p ${{ secrets.DOCKER_HUB_TOKEN}}
-               docker push ${{ secrets.DOCKER_HUB_USERNAME}}/docker-project-image-push:dev 
-  
+               docker push ${{ secrets.DOCKER_HUB_USERNAME}}/docker-project-image-push:main 
+
 
 
